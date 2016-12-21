@@ -15,6 +15,7 @@ ajax.send = function(url, opts) {
   opts = opts || {};
   opts.success = opts.success || noop;
   opts.error = opts.error || noop;
+  opts.complete = opts.complete || noop;
 
   var x = ajax.x();
   x.open(opts.method, url);
@@ -24,9 +25,11 @@ ajax.send = function(url, opts) {
     }
     if (x.status >= 200 && x.status < 300) {
       opts.success(x.responseText);
+      opts.complete();
       return;
     }
     opts.error(x.responseText);
+    opts.complete();
   };
   if (opts.method === 'POST') {
     x.setRequestHeader(CONTENT_TYPE, 'application/x-www-form-urlencoded');
