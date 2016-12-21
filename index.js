@@ -39,6 +39,7 @@ ajax.send = function(url, opts) {
     x.overrideMimeType(opts.mimeType);
   }
   x.send(opts.data);
+  return x;
 };
 
 ajax.get = function(url, opts) {
@@ -48,7 +49,7 @@ ajax.get = function(url, opts) {
   var query = param(opts.data);
   var fullUrl = url + (query.length ? '?' + query : '');
   opts.data = null;
-  ajax.send(fullUrl, opts);
+  return ajax.send(fullUrl, opts);
 };
 
 ajax.post = function(url, opts) {
@@ -56,7 +57,7 @@ ajax.post = function(url, opts) {
   opts.method = 'POST';
 
   opts.data = param(opts.data);
-  ajax.send(url, opts);
+  return ajax.send(url, opts);
 };
 
 module.exports = ajax;
