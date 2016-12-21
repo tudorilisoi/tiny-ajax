@@ -1,6 +1,6 @@
 {
   "name": "tiny-ajax",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A tiny XMLHttpRequest wrapper.",
   "main": "index.js",
   "repository": {
